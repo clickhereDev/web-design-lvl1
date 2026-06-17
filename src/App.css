@@ -1,0 +1,33 @@
+/* ── Code block line number support ── */
+.code-line {
+  display: block;
+  line-height: 1.7;
+}
+
+/* ── Smooth anchor scrolling offset ── */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* ── Box model concentric transition ── */
+.box-model-layer {
+  transition: padding 0.3s ease, border-width 0.3s ease, background-color 0.3s ease;
+}
+
+/* ── Code block copy button ── */
+.copy-btn {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.code-block-wrapper:hover .copy-btn {
+  opacity: 1;
+}
+
+/* ── Visual diagram region hover effect ── */
+.diagram-region {
+  transition: all 0.2s ease;
+}
+.diagram-region:hover {
+  filter: brightness(1.1);
+  transform: scale(1.02);
+}

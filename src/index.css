@@ -1,0 +1,219 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Scrollbar styling ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* ── Smooth scrolling ── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Focus visible ring (Electric Blue) ── */
+:focus-visible {
+  outline: 2px solid #0066FF;
+  outline-offset: 2px;
+}
+
+/* ── Selection (Electric Blue) ── */
+::selection {
+  background: #0066FF;
+  color: #ffffff;
+}
+.dark ::selection {
+  background: #4da3ff;
+  color: #0b0f19;
+}
+
+/* ── RTL font family ── */
+[lang="ar"] {
+  font-family: 'Noto Sans Arabic', system-ui, sans-serif;
+  line-height: 1.8;
+}
+
+/* ── LTR font family ── */
+[lang="en"] {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* ── Code font ── */
+code, pre {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ── Global transition for interactive elements ── */
+a, button, input, select, textarea {
+  transition: all 0.2s ease;
+}
+
+/* ── Dot grid background pattern ── */
+.bg-dot-grid {
+  background-image: radial-gradient(rgba(0, 102, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.dark .bg-dot-grid {
+  background-image: radial-gradient(rgba(77, 163, 255, 0.06) 1px, transparent 1px);
+}
+
+/* ── Subtle grid for mockup backgrounds ── */
+.bg-micro-grid {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.dark .bg-micro-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* ── Glassmorphism utilities ── */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.dark .glass {
+  background: rgba(11, 15, 25, 0.7);
+}
+
+/* ── Code block Tokyo Night theme ── */
+.code-tokyo-night {
+  background: #1a1b26;
+}
+.code-tokyo-night .code-keyword { color: #bb9af7; }
+.code-tokyo-night .code-string { color: #9ece6a; }
+.code-tokyo-night .code-number { color: #ff9e64; }
+.code-tokyo-night .code-tag { color: #f7768e; }
+.code-tokyo-night .code-attr { color: #7dcfff; }
+.code-tokyo-night .code-comment { color: #565f89; font-style: italic; }
+.code-tokyo-night .code-punctuation { color: #a9b1d6; }
+
+/* ── Press effect ── */
+.press-effect {
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.press-effect:active {
+  transform: scale(0.97);
+}
+
+/* ── Inner shadow for mockup cards ── */
+.mockup-card {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.03);
+}
+.dark .mockup-card {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ── Sidebar active indicator ── */
+.sidebar-active {
+  position: relative;
+}
+.sidebar-active::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 60%;
+  border-radius: 0 3px 3px 0;
+  background: #0066FF;
+}
+
+/* ── Tier fade-in animation ── */
+@keyframes tier-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.tier-section {
+  animation: tier-fade-in 0.4s ease forwards;
+}
+
+/* ── Rich explanation typography ── */
+.rich-explanation p {
+  margin-bottom: 1.2em;
+}
+.rich-explanation ul,
+.rich-explanation ol {
+  margin-bottom: 1.2em;
+  padding-inline-start: 1.5em;
+}
+.rich-explanation li {
+  margin-bottom: 0.4em;
+  line-height: 1.75;
+}
+.rich-explanation code.inline-code,
+.rich-explanation code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  background: #eef2ff;
+  color: #4f46e5;
+  border: 1px solid #e0e7ff;
+  white-space: nowrap;
+}
+.dark .rich-explanation code.inline-code,
+.dark .rich-explanation code {
+  background: #1e1b4b;
+  color: #a5b4fc;
+  border-color: #312e81;
+}
+.rich-explanation kbd {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+  background: #f1f5f9;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  border-bottom-width: 2px;
+}
+.dark .rich-explanation kbd {
+  background: #1e293b;
+  color: #cbd5e1;
+  border-color: #475569;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
