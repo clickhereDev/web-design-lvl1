@@ -35,7 +35,7 @@ export default function BreakdownSection({ breakdown }) {
               </code>
             </div>
             <div className="px-4 sm:px-6 py-4">
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm sm:text-base whitespace-pre-line">
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm  whitespace-pre-line">
                 {explanation}
               </p>
             </div>

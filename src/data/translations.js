@@ -12,7 +12,7 @@ export default {
   },
 
   hero: {
-    badge: { en: 'Academic Reference — web-design-lvl1', ar: 'مرجع أكاديمي — web-design-lvl1' },
+    badge: { en: 'Academic Reference — Web Design Track', ar: 'مرجع أكاديمي — Web Design Track' },
     title: {
       en: 'Master the Foundations of Modern Web Design',
       ar: 'أتقن أساسيات تصميم الويب الحديث',
@@ -28,8 +28,8 @@ export default {
   courseIdentity: {
     title: { en: 'What Is This Course?', ar: 'ما هو هذا الكورس؟' },
     content: {
-      en: 'web-design-lvl1 is a comprehensive, academic-grade foundational HTML reference. It systematically builds understanding from the ground up — starting with document structure and advancing through semantic architecture, typography, lists, tables, media embedding, forms, internationalization, and character references. Every concept is explained with precision, accompanied by real code, and broken down analytically.',
-      ar: 'web-design-lvl1 هو مرجع تأسيسي أكاديمي شامل لـ HTML. يبني الفهم بشكل منهجي من الألف إلى الياء — بدءًا من بنية المستند وصولاً إلى الهندسة الدلالية والطباعة والقوائم والجداول ودمج الوسائط والنماذج والتدويل ومراجع الرموز.',
+      en: 'Web Design Track is a comprehensive, academic-grade foundational HTML reference. It systematically builds understanding from the ground up — starting with document structure and advancing through semantic architecture, typography, lists, tables, media embedding, forms, internationalization, and character references. Every concept is explained with precision, accompanied by real code, and broken down analytically.',
+      ar: 'Web Design Track هو مرجع تأسيسي أكاديمي شامل لـ HTML. يبني الفهم بشكل منهجي من الألف إلى الياء — بدءًا من بنية المستند وصولاً إلى الهندسة الدلالية والطباعة والقوائم والجداول ودمج الوسائط والنماذج والتدويل ومراجع الرموز.',
     },
   },
 

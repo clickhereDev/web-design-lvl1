@@ -35,7 +35,7 @@ export default function RichExplanation({ text, lang }) {
   const html = formatExplanation(text);
   return (
     <div
-      className="rich-explanation space-y-4 text-base sm:text-lg leading-relaxed sm:leading-loose"
+      className="rich-explanation space-y-4  sm:text-lg leading-relaxed sm:leading-loose"
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );
