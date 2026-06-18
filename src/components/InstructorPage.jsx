@@ -5,12 +5,14 @@ import {
   ArrowLeft, BookOpen, Code2, ClipboardList, Calendar, Award, Target, CheckCircle,
   Users, Clock, Mic, HelpCircle, BarChart3, ChevronDown, ChevronUp, GitBranch, Flag,
   UsersRound, ListChecks, GraduationCap, Lightbulb, Sparkles, MessageSquare, Brain,
-  Presentation, Eye, FileCode, CheckSquare, AlignLeft
+  Presentation, Eye, FileCode, CheckSquare, AlignLeft,
+  FileText, Shield, Bell, AlertTriangle, ShieldAlert, XCircle
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import lecturesData, { SOFT_SKILLS } from '../data/instructor';
+import T from '../data/translations';
 
-const TABS = { RULES: 'rules', SCHEDULE: 'schedule' };
+const TABS = { RULES: 'rules', CONDUCT: 'conduct', SCHEDULE: 'schedule' };
 
 function TabButton({ active, onClick, icon: Icon, label }) {
   return (
@@ -384,6 +386,12 @@ export default function InstructorPage() {
             icon={Calendar}
             label={lang === 'ar' ? 'الجدول الزمني للشهر' : '4-Week Schedule'}
           />
+          <TabButton
+            active={activeTab === TABS.CONDUCT}
+            onClick={() => setActiveTab(TABS.CONDUCT)}
+            icon={Shield}
+            label={t(T.instructor.tabs.conduct)}
+          />
         </div>
 
         {/* ═══ Tab 1: Rules & Evaluation ═══ */}
@@ -581,6 +589,126 @@ export default function InstructorPage() {
                 </div>
               </div>
             </div>
+          </div>
+        )}
+
+        {/* ═══ Tab 2: Student Code of Conduct ═══ */}
+        {activeTab === TABS.CONDUCT && (
+          <div className="space-y-12">
+
+            {/* ── Part A: Student Operational Rules ── */}
+            <section>
+              <div className="flex items-center gap-2 mb-5">
+                <FileText className="w-5 h-5 text-brand-500" />
+                <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100">
+                  {t(T.instructor.conduct.partATitle)}
+                </h2>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {T.instructor.conduct.rules.map((rule, i) => (
+                  <RuleCard key={i} icon={[Clock, GitBranch, MessageSquare, Shield, Calendar][i]} title={t(rule.title)}>
+                    <ul className="list-disc list-inside space-y-1">
+                      {rule.items.map((item, j) => (
+                        <li key={j}>{t(item)}</li>
+                      ))}
+                    </ul>
+                  </RuleCard>
+                ))}
+              </div>
+            </section>
+
+            {/* ── Part B: Escalation & Penalty Framework ── */}
+            <section>
+              <div className="flex items-center gap-2 mb-2">
+                <AlertTriangle className="w-5 h-5 text-brand-500" />
+                <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100">
+                  {t(T.instructor.conduct.partBTitle)}
+                </h2>
+              </div>
+              <p className="text-sm text-slate-500 dark:text-slate-400 mb-6">
+                {t(T.instructor.conduct.partBSubtitle)}
+              </p>
+
+              <div className="relative">
+                {/* Vertical connector line — hidden on mobile */}
+                <div className="absolute top-0 bottom-0 inset-inline-start-[31px] w-0.5 bg-gradient-to-b from-yellow-400 via-amber-500 via-orange-500 to-red-600 opacity-30 hidden sm:block pointer-events-none" />
+
+                <div className="space-y-8">
+                  {T.instructor.conduct.escalation.map((level) => {
+                    const colorMap = {
+                      yellow: {
+                        badge: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 border-yellow-300 dark:border-yellow-700',
+                        border: 'border-s-yellow-400 dark:border-s-yellow-600',
+                        trigger: 'bg-yellow-50 dark:bg-yellow-900/10 border-yellow-200/60 dark:border-yellow-800/40',
+                        triggerText: 'text-yellow-700 dark:text-yellow-300',
+                        icon: Bell,
+                      },
+                      amber: {
+                        badge: 'bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 border-amber-300 dark:border-amber-700',
+                        border: 'border-s-amber-400 dark:border-s-amber-600',
+                        trigger: 'bg-amber-50 dark:bg-amber-900/10 border-amber-200/60 dark:border-amber-800/40',
+                        triggerText: 'text-amber-700 dark:text-amber-300',
+                        icon: AlertTriangle,
+                      },
+                      orange: {
+                        badge: 'bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 border-orange-300 dark:border-orange-700',
+                        border: 'border-s-orange-400 dark:border-s-orange-600',
+                        trigger: 'bg-orange-50 dark:bg-orange-900/10 border-orange-200/60 dark:border-orange-800/40',
+                        triggerText: 'text-orange-700 dark:text-orange-300',
+                        icon: ShieldAlert,
+                      },
+                      red: {
+                        badge: 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 border-red-300 dark:border-red-700',
+                        border: 'border-s-red-500 dark:border-s-red-600',
+                        trigger: 'bg-red-50 dark:bg-red-900/10 border-red-200/60 dark:border-red-800/40',
+                        triggerText: 'text-red-700 dark:text-red-300',
+                        icon: XCircle,
+                      },
+                    };
+                    const c = colorMap[level.badgeColor];
+                    const LevelIcon = c.icon;
+
+                    return (
+                      <div key={level.level} className="relative flex items-start gap-5">
+                        {/* Badge */}
+                        <div className={`shrink-0 w-[62px] h-[62px] rounded-full flex items-center justify-center z-10 border-2 transition-all duration-300 ${c.badge}`}>
+                          <LevelIcon className="w-5 h-5" />
+                          <span className={`absolute -top-1 -end-1 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold text-white ${
+                            level.badgeColor === 'yellow' ? 'bg-yellow-500' :
+                            level.badgeColor === 'amber' ? 'bg-amber-500' :
+                            level.badgeColor === 'orange' ? 'bg-orange-500' : 'bg-red-600'
+                          }`}>
+                            {level.level}
+                          </span>
+                        </div>
+                        {/* Card */}
+                        <div className={`flex-1 min-w-0 rounded-xl border border-s-transparent transition-colors duration-200 ${c.border} ${
+                          isDark ? 'border-slate-700/60 bg-slate-900/40' : 'border-slate-200/60 bg-white'
+                        }`}>
+                          <div className="p-5">
+                            <h4 className="font-bold text-slate-900 dark:text-slate-100 mb-2">
+                              {t(level.title)}
+                            </h4>
+                            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                              {t(level.description)}
+                            </p>
+                            <div className={`rounded-lg p-3 border text-xs leading-relaxed ${c.trigger}`}>
+                              <span className={`font-semibold uppercase tracking-wider ${c.triggerText}`}>
+                                {lang === 'ar' ? 'متى يُطبّق:' : 'Trigger:'}
+                              </span>
+                              <span className="text-slate-600 dark:text-slate-400">
+                                {t(level.trigger)}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
+
           </div>
         )}
 
